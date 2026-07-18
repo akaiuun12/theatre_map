@@ -1,0 +1,6 @@
+# Netlify 로컬 상태
+.netlify/
+
+# OS
+.DS_Store
+Thumbs.db

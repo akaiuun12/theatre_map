@@ -1,0 +1,380 @@
+:root {
+  --cgv: #e60012;
+  --megabox: #4f2d7f;
+  --lotte: #f0592a;
+  --ink: #1a1a1a;
+  --ink-soft: #6b6b6b;
+  --line: #ececec;
+  --bg: #ffffff;
+  --bg-soft: #f7f7f7;
+  --accent: #1a1a1a;
+  --radius: 10px;
+  --sidebar-w: 380px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", -apple-system, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  display: flex;
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* ── Sidebar ─────────────────────────── */
+#sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--line);
+  background: var(--bg);
+  z-index: 1000;
+}
+
+#sidebar-header {
+  padding: 24px 20px 12px;
+}
+
+#sidebar-header h1 {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+#controls {
+  padding: 8px 20px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+#search-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 14px;
+  background: var(--bg-soft);
+  outline: none;
+  transition: border-color 0.15s;
+}
+#search-input:focus { border-color: #bbb; background: #fff; }
+
+#brand-filters {
+  display: flex;
+  gap: 6px;
+}
+
+.chip {
+  flex: 1;
+  padding: 7px 0;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.chip:hover { border-color: #ccc; }
+.chip.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot.cgv { background: var(--cgv); }
+.dot.megabox { background: var(--megabox); }
+.dot.lotte { background: var(--lotte); }
+
+#list-status {
+  padding: 10px 20px 0;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+#list-status:empty { display: none; }
+
+/* ── Theater list ────────────────────── */
+#theater-list {
+  flex: 1;
+  overflow-y: auto;
+  list-style: none;
+  padding: 8px 12px 12px;
+}
+
+.theater-item {
+  padding: 12px 10px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.12s;
+  border-left: 3px solid transparent;
+}
+.theater-item:hover { background: var(--bg-soft); }
+.theater-item.selected { background: var(--bg-soft); }
+.theater-item.cgv.selected { border-left-color: var(--cgv); }
+.theater-item.megabox.selected { border-left-color: var(--megabox); }
+.theater-item.lotte.selected { border-left-color: var(--lotte); }
+
+.theater-name {
+  font-size: 14.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.theater-meta {
+  margin-top: 3px;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.distance {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.screens {
+  margin-top: 6px;
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.screen-tag {
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+}
+
+#sidebar-footer {
+  padding: 12px 20px;
+  border-top: 1px solid var(--line);
+  font-size: 11px;
+  line-height: 1.5;
+  color: #999;
+}
+
+/* ── Map & popup ─────────────────────── */
+#map { flex: 1; }
+
+.leaflet-popup-content-wrapper {
+  border-radius: var(--radius);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+}
+.leaflet-popup-content { margin: 16px 18px; min-width: 220px; }
+
+.popup-brand {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.popup-brand.cgv { color: var(--cgv); }
+.popup-brand.megabox { color: var(--megabox); }
+.popup-brand.lotte { color: var(--lotte); }
+
+.popup-name {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 2px 0 4px;
+}
+
+.popup-addr {
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+
+.popup-screens { margin-top: 8px; display: flex; gap: 4px; flex-wrap: wrap; }
+
+.popup-links {
+  margin-top: 12px;
+  display: flex;
+  gap: 6px;
+}
+
+.popup-links a {
+  flex: 1;
+  text-align: center;
+  padding: 7px 0;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 7px;
+  text-decoration: none;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  transition: background 0.12s;
+}
+.popup-links a:hover { background: var(--bg-soft); }
+
+.popup-booking {
+  display: block;
+  margin-top: 6px;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 7px;
+  text-decoration: none;
+  background: var(--ink);
+  color: #fff;
+}
+.popup-booking:hover { opacity: 0.85; }
+
+/* ── 지도 위 지명 라벨 ─────────────────── */
+.map-label {
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  font-weight: 600;
+  color: #7a7a7a;
+  text-shadow:
+    -1px -1px 0 rgba(255, 255, 255, 0.9),
+     1px -1px 0 rgba(255, 255, 255, 0.9),
+    -1px  1px 0 rgba(255, 255, 255, 0.9),
+     1px  1px 0 rgba(255, 255, 255, 0.9);
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.map-label.sea {
+  font-size: 13px;
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: 0.35em;
+  color: #96b3cb;
+  text-shadow: none;
+}
+.map-label.city-major {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #4a4a4a;
+  letter-spacing: 0.02em;
+}
+.map-label.city {
+  font-size: 11.5px;
+  color: #8a8a8a;
+}
+.map-label.station {
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #6f88a8;
+}
+
+/* ── 지도 버튼 (뒤로가기 · 내 위치) ────── */
+.map-btn {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 2px 12px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.15s, color 0.15s, transform 0.1s;
+}
+.map-btn svg { display: block; }
+.map-btn:hover { box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.16); }
+.map-btn:active { transform: scale(0.94); }
+.map-btn:disabled { cursor: wait; color: #b5b5b5; }
+.map-btn.hidden { display: none; }
+.map-btn.active { color: #2b7cff; }
+.map-btn.loading svg { animation: pulse 1s ease-in-out infinite; }
+
+@keyframes pulse {
+  50% { opacity: 0.35; }
+}
+
+/* 줌 컨트롤을 지도 버튼과 같은 디자인으로 통일 */
+.leaflet-touch .leaflet-bar,
+.leaflet-bar {
+  border: none;
+  border-radius: 19px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 2px 12px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+.leaflet-touch .leaflet-bar a,
+.leaflet-bar a {
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+.leaflet-bar a:last-child { border-bottom: none; }
+.leaflet-bar a:hover { background: var(--bg-soft); }
+
+#sidebar-footer a {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* marker */
+.brand-marker {
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.user-marker {
+  background: #2b7cff;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px rgba(43, 124, 255, 0.25);
+}
+
+/* ── Mobile ──────────────────────────── */
+@media (max-width: 768px) {
+  #app { flex-direction: column-reverse; }
+  #sidebar {
+    width: 100%;
+    height: 48%;
+    border-right: none;
+    border-top: 1px solid var(--line);
+  }
+  #map { height: 52%; flex: none; }
+  #sidebar-header { padding: 14px 16px 6px; }
+  #sidebar-header h1 { font-size: 17px; }
+  #controls { padding: 6px 16px 10px; }
+  #sidebar-footer { display: none; }
+}
