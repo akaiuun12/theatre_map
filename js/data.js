@@ -152,5 +152,5 @@ const THEATERS = [
 const BRANDS = {
   cgv:     { label: "CGV",       color: "#e60012", booking: "http://www.cgv.co.kr/theaters/" },
   megabox: { label: "메가박스",   color: "#4f2d7f", booking: "https://www.megabox.co.kr/booking" },
-  lotte:   { label: "롯데시네마", color: "#f0592a", booking: "https://www.lottecinema.co.kr/NLCHS/Ticketing" },
+  lotte:   { label: "롯데시네마", color: "#0e9166", booking: "https://www.lottecinema.co.kr/NLCHS/Ticketing" },
 };
