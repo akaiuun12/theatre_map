@@ -25,6 +25,7 @@ const THEATERS = [
   { name: "CGV 청담씨네시티", brand: "cgv", lat: 37.5240, lng: 127.0470, addr: "서울 강남구" },
   { name: "CGV 피카디리1958", brand: "cgv", lat: 37.5704, lng: 126.9921, addr: "서울 종로구" },
   { name: "CGV 홍대", brand: "cgv", lat: 37.5560, lng: 126.9237, addr: "서울 마포구" },
+  { name: "CGV 연남", brand: "cgv", lat: 37.5580, lng: 126.9218, addr: "서울 마포구 동교동", screens: ["4DX", "SUITE CINEMA"] },
 
   // ── 서울 · 메가박스 ─────────────────────────
   { name: "메가박스 코엑스", brand: "megabox", lat: 37.5126, lng: 127.0590, addr: "서울 강남구", screens: ["Dolby Cinema", "MX4D"] },
