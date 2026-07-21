@@ -26,6 +26,10 @@ const THEATERS = [
   { name: "CGV 피카디리1958", brand: "cgv", lat: 37.5704, lng: 126.9921, addr: "서울 종로구" },
   { name: "CGV 홍대", brand: "cgv", lat: 37.5560, lng: 126.9237, addr: "서울 마포구" },
   { name: "CGV 연남", brand: "cgv", lat: 37.5580, lng: 126.9218, addr: "서울 마포구 동교동", screens: ["4DX", "SUITE CINEMA"] },
+  { name: "CGV 고덕강일", brand: "cgv", lat: 37.5560, lng: 127.1580, addr: "서울 강동구 고덕비즈밸리로 51" },
+  { name: "CGV 등촌", brand: "cgv", lat: 37.5555, lng: 126.8555, addr: "서울 강서구 공항대로45길 63" },
+  { name: "CGV 방학", brand: "cgv", lat: 37.6665, lng: 127.0435, addr: "서울 도봉구 도봉로 684" },
+  { name: "CGV 중계", brand: "cgv", lat: 37.6430, lng: 127.0730, addr: "서울 노원구 동일로204가길 12" },
 
   // ── 서울 · 메가박스 ─────────────────────────
   { name: "메가박스 코엑스", brand: "megabox", lat: 37.5126, lng: 127.0590, addr: "서울 강남구", screens: ["Dolby Cinema", "MX4D"] },
@@ -41,6 +45,7 @@ const THEATERS = [
   { name: "메가박스 더 부티크 목동", brand: "megabox", lat: 37.5262, lng: 126.8752, addr: "서울 양천구", screens: ["더 부티크"] },
   { name: "메가박스 상암월드컵경기장", brand: "megabox", lat: 37.5683, lng: 126.8972, addr: "서울 마포구" },
   { name: "메가박스 강동", brand: "megabox", lat: 37.5270, lng: 127.1260, addr: "서울 강동구" },
+  { name: "메가박스 마곡", brand: "megabox", lat: 37.5590, lng: 126.8330, addr: "서울 강서구 마곡동" },
 
   // ── 서울 · 롯데시네마 ───────────────────────
   { name: "롯데시네마 월드타워", brand: "lotte", lat: 37.5126, lng: 127.1025, addr: "서울 송파구", screens: ["SUPERPLEX G", "SUPER 4D"] },
@@ -55,6 +60,11 @@ const THEATERS = [
   { name: "롯데시네마 청량리", brand: "lotte", lat: 37.5802, lng: 127.0480, addr: "서울 동대문구" },
   { name: "롯데시네마 가산디지털", brand: "lotte", lat: 37.4785, lng: 126.8880, addr: "서울 금천구" },
   { name: "롯데시네마 은평", brand: "lotte", lat: 37.6350, lng: 126.9180, addr: "서울 은평구" },
+  { name: "롯데시네마 도곡", brand: "lotte", lat: 37.4900, lng: 127.0450, addr: "서울 강남구 도곡동" },
+  { name: "롯데시네마 독산", brand: "lotte", lat: 37.4670, lng: 126.9080, addr: "서울 금천구 시흥대로 399" },
+  { name: "롯데시네마 신대방", brand: "lotte", lat: 37.4880, lng: 126.8980, addr: "서울 동작구 시흥대로" },
+  { name: "롯데시네마 신도림", brand: "lotte", lat: 37.5090, lng: 126.8910, addr: "서울 구로구 (디큐브시티)" },
+  { name: "롯데시네마 용산", brand: "lotte", lat: 37.5300, lng: 126.9700, addr: "서울 용산구 청파로 74" },
 
   // ── 경기 · 인천 ─────────────────────────────
   { name: "CGV 판교", brand: "cgv", lat: 37.3947, lng: 127.1112, addr: "경기 성남시" },
@@ -68,9 +78,14 @@ const THEATERS = [
   { name: "CGV 파주운정", brand: "cgv", lat: 37.7155, lng: 126.7673, addr: "경기 파주시" },
   { name: "CGV 인천", brand: "cgv", lat: 37.4490, lng: 126.7020, addr: "인천 미추홀구" },
   { name: "CGV 인천논현", brand: "cgv", lat: 37.4000, lng: 126.7300, addr: "인천 남동구" },
+  { name: "CGV 서현", brand: "cgv", lat: 37.3855, lng: 127.1235, addr: "경기 성남시 분당구 서현로180번길 19" },
+  { name: "CGV 고양백석", brand: "cgv", lat: 37.6480, lng: 126.7900, addr: "경기 고양시 일산동구 중앙로 1036" },
+  { name: "CGV 인천연수", brand: "cgv", lat: 37.4085, lng: 126.6560, addr: "인천 연수구 청능대로 210" },
   { name: "메가박스 킨텍스", brand: "megabox", lat: 37.6680, lng: 126.7450, addr: "경기 고양시" },
   { name: "메가박스 분당", brand: "megabox", lat: 37.3789, lng: 127.1140, addr: "경기 성남시" },
   { name: "메가박스 안양", brand: "megabox", lat: 37.4017, lng: 126.9227, addr: "경기 안양시" },
+  { name: "메가박스 백석벨라시타", brand: "megabox", lat: 37.6510, lng: 126.7920, addr: "경기 고양시 일산동구 강송로 33" },
+  { name: "메가박스 검단", brand: "megabox", lat: 37.5960, lng: 126.6480, addr: "인천 서구 서곶로 788" },
   { name: "메가박스 송도", brand: "megabox", lat: 37.3820, lng: 126.6570, addr: "인천 연수구", screens: ["Dolby Cinema"] },
   { name: "메가박스 수원", brand: "megabox", lat: 37.2790, lng: 127.0440, addr: "경기 수원시" },
   { name: "메가박스 남양주현대아울렛 스페이스원", brand: "megabox", lat: 37.6210, lng: 127.2270, addr: "경기 남양주시" },
@@ -88,8 +103,12 @@ const THEATERS = [
   { name: "CGV 센텀시티", brand: "cgv", lat: 35.1690, lng: 129.1300, addr: "부산 해운대구", screens: ["IMAX", "4DX"] },
   { name: "CGV 서면", brand: "cgv", lat: 35.1580, lng: 129.0600, addr: "부산 부산진구" },
   { name: "CGV 대연", brand: "cgv", lat: 35.1350, lng: 129.0930, addr: "부산 남구" },
+  { name: "CGV 화명", brand: "cgv", lat: 35.2160, lng: 129.0080, addr: "부산 북구 화명대로 16" },
+  { name: "CGV 정관", brand: "cgv", lat: 35.3230, lng: 129.2080, addr: "부산 기장군 정관읍 매학리" },
   { name: "메가박스 해운대", brand: "megabox", lat: 35.1630, lng: 129.1640, addr: "부산 해운대구" },
   { name: "메가박스 부산대", brand: "megabox", lat: 35.2300, lng: 129.0850, addr: "부산 금정구" },
+  { name: "메가박스 사상", brand: "megabox", lat: 35.1520, lng: 128.9880, addr: "부산 사상구" },
+  { name: "메가박스 덕천", brand: "megabox", lat: 35.2070, lng: 129.0080, addr: "부산 북구 덕천동" },
   { name: "롯데시네마 센텀시티", brand: "lotte", lat: 35.1697, lng: 129.1310, addr: "부산 해운대구" },
   { name: "롯데시네마 광복", brand: "lotte", lat: 35.0980, lng: 129.0360, addr: "부산 중구" },
   { name: "롯데시네마 서면", brand: "lotte", lat: 35.1577, lng: 129.0562, addr: "부산 부산진구" },
@@ -100,12 +119,15 @@ const THEATERS = [
   { name: "롯데시네마 창원", brand: "lotte", lat: 35.2280, lng: 128.6820, addr: "경남 창원시" },
   { name: "메가박스 창원", brand: "megabox", lat: 35.2220, lng: 128.6790, addr: "경남 창원시" },
   { name: "롯데시네마 김해부원", brand: "lotte", lat: 35.2280, lng: 128.8830, addr: "경남 김해시" },
+  { name: "CGV 거제", brand: "cgv", lat: 34.8800, lng: 128.6220, addr: "경남 거제시 장평로 12" },
 
   // ── 대구 · 경북 ─────────────────────────────
   { name: "CGV 대구", brand: "cgv", lat: 35.8815, lng: 128.5920, addr: "대구 북구", screens: ["IMAX", "4DX"] },
   { name: "CGV 대구스타디움", brand: "cgv", lat: 35.8310, lng: 128.6890, addr: "대구 수성구" },
+  { name: "CGV 대구수성", brand: "cgv", lat: 35.8480, lng: 128.6280, addr: "대구 수성구 지범로 191" },
   { name: "메가박스 대구신세계", brand: "megabox", lat: 35.8770, lng: 128.6280, addr: "대구 동구", screens: ["Dolby Cinema"] },
   { name: "메가박스 대구이시아", brand: "megabox", lat: 35.9280, lng: 128.6390, addr: "대구 동구" },
+  { name: "메가박스 경북도청", brand: "megabox", lat: 36.5750, lng: 128.4160, addr: "경북 예천군 호명면 새움3로 70" },
   { name: "롯데시네마 대구율하", brand: "lotte", lat: 35.8660, lng: 128.6960, addr: "대구 동구" },
   { name: "롯데시네마 상인", brand: "lotte", lat: 35.8180, lng: 128.5350, addr: "대구 달서구" },
   { name: "CGV 포항", brand: "cgv", lat: 36.0430, lng: 129.3650, addr: "경북 포항시" },
@@ -115,6 +137,7 @@ const THEATERS = [
   // ── 대전 · 충청 ─────────────────────────────
   { name: "CGV 대전", brand: "cgv", lat: 36.3280, lng: 127.4270, addr: "대전 중구" },
   { name: "CGV 대전터미널", brand: "cgv", lat: 36.3510, lng: 127.4380, addr: "대전 동구" },
+  { name: "CGV 대전탄방", brand: "cgv", lat: 36.3480, lng: 127.3850, addr: "대전 서구 문정로 85" },
   { name: "메가박스 대전신세계", brand: "megabox", lat: 36.3745, lng: 127.3820, addr: "대전 유성구", screens: ["Dolby Cinema"] },
   { name: "롯데시네마 대전둔산", brand: "lotte", lat: 36.3520, lng: 127.3770, addr: "대전 서구" },
   { name: "CGV 천안펜타포트", brand: "cgv", lat: 36.8190, lng: 127.1560, addr: "충남 천안시" },
@@ -126,6 +149,7 @@ const THEATERS = [
 
   // ── 광주 · 전라 ─────────────────────────────
   { name: "CGV 광주충장로", brand: "cgv", lat: 35.1480, lng: 126.9180, addr: "광주 동구" },
+  { name: "CGV 광주첨단", brand: "cgv", lat: 35.2200, lng: 126.8500, addr: "광주 광산구 임방울대로826번길 29-31" },
   { name: "메가박스 광주상무", brand: "megabox", lat: 35.1520, lng: 126.8480, addr: "광주 서구" },
   { name: "롯데시네마 광주", brand: "lotte", lat: 35.1490, lng: 126.9190, addr: "광주 동구" },
   { name: "CGV 전주고사", brand: "cgv", lat: 35.8180, lng: 127.1430, addr: "전북 전주시" },
@@ -137,6 +161,7 @@ const THEATERS = [
   // ── 강원 ────────────────────────────────────
   { name: "CGV 춘천", brand: "cgv", lat: 37.8650, lng: 127.7230, addr: "강원 춘천시" },
   { name: "메가박스 남춘천", brand: "megabox", lat: 37.8640, lng: 127.7240, addr: "강원 춘천시" },
+  { name: "메가박스 춘천석사", brand: "megabox", lat: 37.8620, lng: 127.7460, addr: "강원 춘천시 석사동" },
   { name: "롯데시네마 춘천", brand: "lotte", lat: 37.8820, lng: 127.7290, addr: "강원 춘천시" },
   { name: "CGV 원주", brand: "cgv", lat: 37.3420, lng: 127.9200, addr: "강원 원주시" },
   { name: "메가박스 원주센트럴", brand: "megabox", lat: 37.3380, lng: 127.9260, addr: "강원 원주시" },
