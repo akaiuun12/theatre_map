@@ -121,6 +121,107 @@ body {
 }
 #list-status:empty { display: none; }
 
+/* ── 지금 상영중인 영화 ──────────────── */
+#now-playing {
+  border-bottom: 1px solid var(--line);
+}
+
+#now-playing-toggle {
+  width: 100%;
+  padding: 12px 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+#now-playing-toggle:hover { background: var(--bg-soft); }
+#now-playing-toggle .chevron {
+  font-size: 11px;
+  color: var(--ink-soft);
+  transition: transform 0.15s;
+}
+#now-playing-toggle[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+
+#now-playing-body.hidden { display: none; }
+
+#now-playing-list {
+  list-style: none;
+  max-height: 260px;
+  overflow-y: auto;
+  padding: 0 20px 12px;
+}
+
+.now-playing-msg {
+  padding: 10px 0;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+
+.now-playing-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-top: 1px solid var(--line);
+}
+.now-playing-item:first-child { border-top: none; }
+
+.np-rank {
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.np-info { flex: 1; min-width: 0; }
+
+.np-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.np-new {
+  flex-shrink: 0;
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: #e60012;
+  color: #fff;
+}
+
+.np-meta {
+  margin-top: 2px;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+}
+
+.np-link {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.np-link:hover { background: var(--bg-soft); }
+
 /* ── Theater list ────────────────────── */
 #theater-list {
   flex: 1;
