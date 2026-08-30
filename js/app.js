@@ -255,6 +255,7 @@ function selectTheater(idx, { pan }) {
   document.querySelectorAll(".theater-item").forEach((el) => {
     el.classList.toggle("selected", Number(el.dataset.idx) === idx);
   });
+  window.gaEvent("select_theater", { theater: t.name, brand: t.brand });
   backBtn.classList.remove("hidden");
 }
 
@@ -326,6 +327,7 @@ function locateUser({ silent = false } = {}) {
       locateBtn.disabled = false;
       locateBtn.classList.remove("loading");
       locateBtn.classList.add("active");
+      window.gaEvent("locate_me", { status: "granted" });
       render();
     },
     (err) => {
@@ -335,6 +337,7 @@ function locateUser({ silent = false } = {}) {
         render();
         return;
       }
+      window.gaEvent("locate_me", { status: err.code === err.PERMISSION_DENIED ? "denied" : "error" });
       statusEl.textContent =
         err.code === err.PERMISSION_DENIED
           ? "위치 권한이 거부되었습니다. 브라우저 설정에서 허용해 주세요."
@@ -355,6 +358,7 @@ document.querySelectorAll("#brand-filters .chip").forEach((chip) => {
     document.querySelectorAll("#brand-filters .chip").forEach((c) => c.classList.remove("active"));
     chip.classList.add("active");
     activeBrand = chip.dataset.brand;
+    window.gaEvent("filter_brand", { brand: activeBrand });
     render();
   });
 });

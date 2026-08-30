@@ -1,5 +1,5 @@
 // ── 지금 상영중인 영화 (KOFIC 박스오피스 기반) ─────
-// Netlify Function(/.netlify/functions/now-playing)을 통해 영화진흥위원회
+// Vercel Function(/api/now-playing)을 통해 영화진흥위원회
 // 일별 박스오피스를 가져온다. 지점별 상영 여부가 아니라 전국 흥행 순위 기준이다.
 (function () {
   const toggle = document.getElementById("now-playing-toggle");
@@ -21,7 +21,7 @@
   async function load() {
     listEl.innerHTML = `<li class="now-playing-msg">불러오는 중…</li>`;
     try {
-      const res = await fetch("/.netlify/functions/now-playing");
+      const res = await fetch("/api/now-playing");
       const data = await res.json();
       if (!res.ok || data.error) throw new Error(data.error || "요청 실패");
 
@@ -55,6 +55,7 @@
     const expanded = toggle.getAttribute("aria-expanded") === "true";
     toggle.setAttribute("aria-expanded", String(!expanded));
     body.classList.toggle("hidden", expanded);
+    if (!expanded) window.gaEvent("open_now_playing");
     if (!expanded && !loaded) {
       loaded = true;
       load();

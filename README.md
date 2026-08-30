@@ -1,7 +1,8 @@
 # 🎬 내 주변 영화관 지도
 
 CGV · 메가박스 · 롯데시네마의 위치를 지도에서 한눈에 확인하는 미니멀 웹사이트입니다.
-API 키 없이 동작하는 순수 정적 사이트입니다.
+지도는 API 키 없이 동작하는 정적 페이지이고, '지금 상영중' 목록만 서버리스 함수
+([api/now-playing.js](api/now-playing.js))가 KOFIC 박스오피스를 대신 호출해 채웁니다.
 
 ## 실행 방법
 
@@ -14,7 +15,16 @@ python -m http.server 8000
 # 이후 http://localhost:8000 접속
 ```
 
-GitHub Pages, Netlify 등에 그대로 올려도 됩니다.
+'지금 상영중' 패널까지 로컬에서 확인하려면 서버리스 함수가 필요합니다:
+
+```bash
+npm i -g vercel
+vercel dev            # http://localhost:3000, /api/now-playing 포함
+```
+
+함수는 `KOFIC_API_KEY` 환경 변수를 씁니다. 로컬에서는 `.env.local` 에 넣고,
+배포 환경에는 Vercel 프로젝트 Settings > Environment Variables 에 등록합니다.
+키가 없으면 '지금 상영중' 패널만 오류를 표시하고 지도는 정상 동작합니다.
 
 ## 기능
 
@@ -33,6 +43,44 @@ GitHub Pages, Netlify 등에 그대로 올려도 됩니다.
 ```js
 { name: "CGV 신규지점", brand: "cgv", lat: 37.0, lng: 127.0, addr: "서울 어딘가", screens: ["IMAX"] },
 ```
+
+## 배포 (Vercel)
+
+`main` 에 푸시하면 Vercel이 배포합니다. 빌드 단계가 없어 리포 루트가 그대로
+서빙되고, `api/` 아래 파일만 서버리스 함수로 실행됩니다.
+
+| 항목 | 값 |
+|---|---|
+| 설정 파일 | [vercel.json](vercel.json) — Framework `Other`, 빌드 없음, 출력 루트 |
+| 서버리스 함수 | `api/now-playing.js` → `/api/now-playing` (1시간 캐시) |
+| 환경 변수 | `KOFIC_API_KEY` (Production/Preview 모두 등록) |
+
+최초 연결: [vercel.com/new](https://vercel.com/new) 에서 이 리포를 import 하고
+환경 변수를 등록한 뒤 Deploy.
+
+## 분석 (Google Analytics 4)
+
+사이트마다 **별도 GA4 속성**을 쓰고, 리포당 측정 ID는 한 곳에서만 관리합니다.
+
+| 항목 | 이 리포에서 |
+|---|---|
+| 측정 ID 위치 | [config.js](config.js) 의 `window.GA_MEASUREMENT_ID` |
+| 로더 | [analytics.js](analytics.js) — 5개 사이트 공통 파일 |
+| 미설정 시 | gtag를 아예 로드하지 않고 사이트는 그대로 동작 |
+| 집계 제외 | `file://`, `localhost` |
+| 이벤트 API | `window.gaEvent(name, params)` / `window.gaPageView(path)` |
+
+측정 ID는 Google Analytics > 관리 > 데이터 스트림에서 확인합니다 (`G-` 로 시작).
+공개 식별자라 비밀값이 아니므로 `config.js` 에 넣고 커밋합니다.
+
+기본 페이지뷰 외에 이 사이트가 보내는 이벤트:
+
+| 이벤트 | 발생 시점 | 파라미터 |
+|---|---|---|
+| `select_theater` | 지점 선택 | `theater`, `brand` |
+| `filter_brand` | 브랜드 필터 변경 | `brand` |
+| `locate_me` | 내 위치 찾기 | `status` (`granted`/`denied`/`error`) |
+| `open_now_playing` | '지금 상영중' 패널 열기 | — |
 
 ## 알려진 한계
 

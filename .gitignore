@@ -1,5 +1,6 @@
-# Netlify 로컬 상태
-.netlify/
+# Vercel 로컬 상태 / 환경 변수
+.vercel
+.env.local
 
 # OS
 .DS_Store
